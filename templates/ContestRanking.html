@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> Status </title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        .bg {
+            background: url("/static/school-uniform-ribbon-sky-Love-Live-Sunshine-Kurosawa-Ruby-anime-1279519-wallhere.com.jpg");
+            background-position: center 0;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -ms-background-size: cover;
+        }
+        .jumbotron {
+            background-color: rgba(0, 0, 0, 0);
+        }
+    </style>
+</head>
+
+<body class="row bg">
+    <div class="container-fluid">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">AQOJ</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/JudgeHome">HOME</a></li>
+                        <li><a href="/ProblemSet">PROBLEM</a></li>
+                        <li class="active"><a href="/Ranking">RANKING</a></li>
+                        <li><a href="/ContestList">CONTEST</a></li>
+                        <li><a href="/Status">STATUS</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                USER
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Login">LOGIN</a></li>
+                                <li><a href="/Logout">LOG OUT</a></li>
+                                <li><a href="/Register">REGISTER</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div><a href="/ContestList">返回到比赛列表页面</a></div>
+        <table class="table">
+
+            <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Accepted</th>
+                <th>Time Used</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for i in context_ls %}
+                <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.0 }}</td>
+                <td>{{ i.1 }}</td>
+                <td>{{ i.2 }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

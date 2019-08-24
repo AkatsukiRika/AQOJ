@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Welcome to Aqours Online Judge! </title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        .bg {
+            background: url("/static/Love-Live-Sunshine-logo-simple-Love-Live-1334089.jpg");
+            background-position: center 0;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -ms-background-size: cover;
+        }
+        .jumbotron {
+            background-color: rgba(0, 0, 0, 0);
+        }
+    </style>
+</head>
+
+<body class="row bg">
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">AQOJ</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/JudgeHome">HOME</a></li>
+                        <li><a href="/ProblemSet">PROBLEM</a></li>
+                        <li><a href="/Ranking">RANKING</a></li>
+                        <li><a href="/ContestList">CONTEST</a></li>
+                        <li><a href="/Status">STATUS</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                USER
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Login">LOGIN</a></li>
+                                <li><a href="/Logout">LOG OUT</a></li>
+                                <li><a href="/Register">REGISTER</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+
+                {% if messages %}
+                    <script>
+                    {% for msg in messages %}
+                        alert('{{ msg.message }}');
+                    {% endfor %}
+                    </script>
+                {% endif %}
+
+                <table class="table">
+                    <h2>RECENT ACTIVITY</h2>
+                    <h5 style="color: gray">What happened recently</h5>
+                    <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Problem</th>
+                        <th>Status</th>
+                        <th>Language</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in msg_ls %}
+                        {% if i.AC %}
+                        <tr>
+                            <td>{{ i.postman }}</td>
+                            <td>{{ i.problem }}</td>
+                            <td style="color: green">AC</td>
+                            <td>{{ i.language }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if i.CE %}
+                        <tr>
+                            <td>{{ i.postman }}</td>
+                            <td>{{ i.problem }}</td>
+                            <td style="color: blue">CE</td>
+                            <td>{{ i.language }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if i.RE %}
+                        <tr>
+                            <td>{{ i.postman }}</td>
+                            <td>{{ i.problem }}</td>
+                            <td style="color: orange">RE</td>
+                            <td>{{ i.language }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if i.WA %}
+                        <tr>
+                            <td>{{ i.postman }}</td>
+                            <td>{{ i.problem }}</td>
+                            <td style="color: red">WA</td>
+                            <td>{{ i.language }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if i.TLE %}
+                        <tr>
+                            <td>{{ i.postman }}</td>
+                            <td>{{ i.problem }}</td>
+                            <td style="color: orange">TLE</td>
+                            <td>{{ i.language }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if i.MLE %}
+                        <tr>
+                            <td>{{ i.postman }}</td>
+                            <td>{{ i.problem }}</td>
+                            <td style="color: orange">MLE</td>
+                            <td>{{ i.language }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if i.OLE %}
+                        <tr>
+                            <td>{{ i.postman }}</td>
+                            <td>{{ i.problem }}</td>
+                            <td style="color: orange">OLE</td>
+                            <td>{{ i.language }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if i.PE %}
+                        <tr>
+                            <td>{{ i.postman }}</td>
+                            <td>{{ i.problem }}</td>
+                            <td style="color: orange">PE</td>
+                            <td>{{ i.language }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if i.WJ %}
+                        <tr>
+                            <td>{{ i.postman }}</td>
+                            <td>{{ i.problem }}</td>
+                            <td style="color: gray">WJ</td>
+                            <td>{{ i.language }}</td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <h2>RINACHAN BOARD</h2>
+                <h5 style="color: gray">You can say everything here!</h5>
+                <blockquote>
+                    当前登陆中的用户：<span style="color: deeppink">{{ user }}</span><br/>
+                    {{ e.board|linebreaksbr }}
+                </blockquote>
+            </div>
+            <div class="col-sm-6">
+                <h2>ANNOUNCEMENT</h2>
+                <h5 style="color: gray">Messages from the system admin</h5>
+                <p>{{ e.announcement|linebreaksbr }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>
+            水水OJ管理提醒您：
+            <br/>道路千万条，做题第一条
+            <br/>考试不ＡＣ，亲妈炸群聊
+        </p>
+    </div>
+</body>
+</html>
