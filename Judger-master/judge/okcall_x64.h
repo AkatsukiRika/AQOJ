@@ -78,10 +78,7 @@ SysCallLimit CppLimit[] = {
     Allow (SYS_uname) Calls (1),
     Allow (SYS_write) Calls (INF),
     Allow (SYS_writev) Calls (INF),
-<<<<<<< HEAD
     Allow (SYS_arch_prctl) Calls (INF), // 20-06-12新增
-=======
->>>>>>> 925150b4b2604b4b2f453c3826270df15953848c
     EndLimitTable
 };
 
