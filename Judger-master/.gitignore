@@ -1,0 +1,12 @@
+
+/judge/[Jj]udge
+/judge/Temp/*
+
+~*
+
+*.swp
+*.log
+log.*
+debug.*
+
+!.gitignore
