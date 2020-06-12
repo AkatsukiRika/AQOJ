@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 WSGI config for JUDGE project.
 
@@ -14,3 +15,21 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'JUDGE.settings')
 
 application = get_wsgi_application()
+=======
+"""
+WSGI config for JUDGE project.
+
+It exposes the WSGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/
+"""
+
+import os
+
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'JUDGE.settings')
+
+application = get_wsgi_application()
+>>>>>>> 925150b4b2604b4b2f453c3826270df15953848c

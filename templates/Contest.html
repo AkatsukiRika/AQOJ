@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html>
     <head>
         <title> Contest </title>
@@ -84,4 +85,92 @@
             </div>
         </div>
     </body>
+=======
+<html>
+    <head>
+        <title> Contest </title>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            .bg {
+                background: url("/static/Love-Live-Sunshine-logo-simple-Love-Live-1334089.jpg");
+                background-position: center 0;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                -webkit-background-size: cover;
+                -o-background-size: cover;
+                -moz-background-size: cover;
+                -ms-background-size: cover;
+            }
+        </style>
+    </head>
+    
+    <body class="row bg">
+        <div class="container-fluid">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">AQOJ</a>
+                    </div>
+                    <div>
+                        <ul class="nav navbar-nav">
+                            <li><a href="/JudgeHome">HOME</a></li>
+                            <li><a href="/ProblemSet">PROBLEM</a></li>
+                            <li><a href="/Ranking">RANKING</a></li>
+                            <li class="active"><a href="#">CONTEST</a></li>
+                            <li><a href="/Status">STATUS</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    USER
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Login">LOGIN</a></li>
+                                    <li><a href="/Logout">LOG OUT</a></li>
+                                    <li><a href="/Register">REGISTER</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>{{ contest.title }}</h1>
+                    <p>
+                        参赛状态：{{ part }}<br/>
+                        开始时间：{{ contest.start_time }} <br/>
+                        结束时间：{{ contest.end_time }}
+                    </p>
+
+                    <ul class="list-group">
+                        {% for problem in problem_list.all %}
+                        <li class="list-group-item" style="opacity: 0.8"><a href="/Problem/{{ problem.problem_id }}">{{ problem.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    <p>
+                        <form action="{% url 'participate' contest.contest_id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-success" value="参加比赛" />
+                        </form>
+                        <form action="{% url 'exit' contest.contest_id %}">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-warning" value="退出比赛"/>
+                        </form>
+                    </p>
+                    <div>
+                        <a href="/ContestList"> 回到列表 </a>
+                        <a href="/ContestStatus/{{ contest.contest_id }}"> 查看提交 </a>
+                        <a href="/ContestRanking/{{ contest.contest_id }}"> 查看排行 </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+>>>>>>> 925150b4b2604b4b2f453c3826270df15953848c
 </html>

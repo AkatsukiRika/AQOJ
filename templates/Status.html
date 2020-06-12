@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 
@@ -212,3 +213,219 @@
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> Status </title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        .bg {
+            background: url("/static/Love-Live-Sunshine-logo-simple-Love-Live-1334089.jpg");
+            background-position: center 0;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -ms-background-size: cover;
+        }
+        .jumbotron {
+            background-color: rgba(0, 0, 0, 0);
+        }
+    </style>
+</head>
+
+<body class="row bg">
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">AQOJ</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/JudgeHome">HOME</a></li>
+                        <li><a href="/ProblemSet">PROBLEM</a></li>
+                        <li><a href="/Ranking">RANKING</a></li>
+                        <li><a href="/ContestList">CONTEST</a></li>
+                        <li class="active"><a href="/Status">STATUS</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                USER
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Login">LOGIN</a></li>
+                                <li><a href="/Logout">LOG OUT</a></li>
+                                <li><a href="/Register">REGISTER</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <table class="table" style="opacity: 0.8">
+
+            <thead>
+            <tr>
+                <th>Submission Time</th>
+                <th>Problem</th>
+                <th>User</th>
+                <th>Language</th>
+                <th>Status</th>
+                <th>Exec Time</th>
+                <th>Memory</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                {% for code in code_list %}
+                    {% if code.AC %}
+                        <tr class="success">
+                            <td>{{ code.submit_time }}</td>
+                            <td>{{ code.problem }}</td>
+                            <td>{{ code.postman }}</td>
+                            <td>{{ code.language }}</td>
+                            <td><span class="glyphicon glyphicon-ok"></span>  ACCEPTED</td>
+                            <td>{{ code.time_used }}</td>
+                            <td>{{ code.memory_used }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if code.WA %}
+                        <tr class="danger">
+                            <td>{{ code.submit_time }}</td>
+                            <td>{{ code.problem }}</td>
+                            <td>{{ code.postman }}</td>
+                            <td>{{ code.language }}</td>
+                            <td><span class="glyphicon glyphicon-remove"></span>  WRONG ANSWER</td>
+                            <td>{{ code.time_used }}</td>
+                            <td>{{ code.memory_used }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if code.TLE %}
+                        <tr class="warning">
+                            <td>{{ code.submit_time }}</td>
+                            <td>{{ code.problem }}</td>
+                            <td>{{ code.postman }}</td>
+                            <td>{{ code.language }}</td>
+                            <td><span class="glyphicon glyphicon-time"></span>  TIME LIMIT EXCEEDED</td>
+                            <td>{{ code.time_used }}</td>
+                            <td>{{ code.memory_used }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if code.MLE %}
+                        <tr class="warning">
+                            <td>{{ code.submit_time }}</td>
+                            <td>{{ code.problem }}</td>
+                            <td>{{ code.postman }}</td>
+                            <td>{{ code.language }}</td>
+                            <td><span class="glyphicon glyphicon-edit"></span>  MEMORY LIMIT EXCEEDED</td>
+                            <td>{{ code.time_used }}</td>
+                            <td>{{ code.memory_used }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if code.CE %}
+                        <tr class="info">
+                            <td>{{ code.submit_time }}</td>
+                            <td>{{ code.problem }}</td>
+                            <td>{{ code.postman }}</td>
+                            <td>{{ code.language }}</td>
+                            <td><span class="glyphicon glyphicon glyphicon-console"></span>  COMPILE ERROR</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if code.RE %}
+                        <tr class="warning">
+                            <td>{{ code.submit_time }}</td>
+                            <td>{{ code.problem }}</td>
+                            <td>{{ code.postman }}</td>
+                            <td>{{ code.language }}</td>
+                            <td><span class="glyphicon glyphicon-wrench"></span>  RUNTIME ERROR</td>
+                            <td>{{ code.time_used }}</td>
+                            <td>{{ code.memory_used }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if code.PE %}
+                        <tr class="warning">
+                            <td>{{ code.submit_time }}</td>
+                            <td>{{ code.problem }}</td>
+                            <td>{{ code.postman }}</td>
+                            <td>{{ code.language }}</td>
+                            <td><span class="glyphicon glyphicon-print"></span>  PRESENTATION ERROR</td>
+                            <td>{{ code.time_used }}</td>
+                            <td>{{ code.memory_used }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if code.OLE %}
+                        <tr class="warning">
+                            <td>{{ code.submit_time }}</td>
+                            <td>{{ code.problem }}</td>
+                            <td>{{ code.postman }}</td>
+                            <td>{{ code.language }}</td>
+                            <td><span class="glyphicon glyphicon-file"></span>  OUTPUT LIMIT EXCEEDED</td>
+                            <td>{{ code.time_used }}</td>
+                            <td>{{ code.memory_used }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if code.RF %}
+                        <tr class="danger">
+                            <td>{{ code.submit_time }}</td>
+                            <td>{{ code.problem }}</td>
+                            <td>{{ code.postman }}</td>
+                            <td>{{ code.language }}</td>
+                            <td><span class="glyphicon glyphicon-stop"></span>  RESTRICTED FUNCTION</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if code.SE %}
+                        <tr class="danger">
+                            <td>{{ code.submit_time }}</td>
+                            <td>{{ code.problem }}</td>
+                            <td>{{ code.postman }}</td>
+                            <td>{{ code.language }}</td>
+                            <td><span class="glyphicon glyphicon-off"></span>  SYSTEM ERROR</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if code.WJ %}
+                        <tr class="active">
+                            <td>{{ code.submit_time }}</td>
+                            <td>{{ code.problem }}</td>
+                            <td>{{ code.postman }}</td>
+                            <td>{{ code.language }}</td>
+                            <td><span class="glyphicon glyphicon glyphicon-hourglass"></span>  JUDGING</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+>>>>>>> 925150b4b2604b4b2f453c3826270df15953848c
