@@ -140,3 +140,7 @@ cython_debug/
 
 # MACOS IGNORE
 .DS_Store
+
+# IDE IGNORE
+.idea/
+.vscode/
