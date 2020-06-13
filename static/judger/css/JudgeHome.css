@@ -1,0 +1,12 @@
+nav {
+    position: fixed;
+    top: -20px;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.recent-activity-tbody {
+    font-size: 14px;
+}

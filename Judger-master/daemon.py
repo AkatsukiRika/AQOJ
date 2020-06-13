@@ -109,13 +109,8 @@ class judge:
 						+" -d "+self.tmpdir+" -t "+str(self.timelimit)+" -m "+str(self.memlimit)+" -o "+str(self.outlimit) + " -T",shell=True,stdout=subprocess.PIPE)
 			else:
 				# os.chdir("./judge")
-<<<<<<< HEAD
 				print("执行的命令：" + "./judge -l "+str(self.lang)+" -D "+self.datadir\
 						+" -d "+self.tmpdir+" -t "+str(self.timelimit)+" -m "+str(self.memlimit)+" -o "+str(self.outlimit))
-=======
-				# print("执行的命令：" + "./judge -l "+str(self.lang)+" -D "+self.datadir\
-				#		+" -d "+self.tmpdir+" -t "+str(self.timelimit)+" -m "+str(self.memlimit)+" -o "+str(self.outlimit))
->>>>>>> 925150b4b2604b4b2f453c3826270df15953848c
 				p = subprocess.Popen("./judge -l "+str(self.lang)+" -D "+self.datadir\
 						+" -d "+self.tmpdir+" -t "+str(self.timelimit)+" -m "+str(self.memlimit)+" -o "+str(self.outlimit),shell=True,stdout=subprocess.PIPE)
 			for l in p.stdout:

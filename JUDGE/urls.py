@@ -19,6 +19,7 @@ from judger import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path(r'^$', views.judge_home),
     re_path(r'^JudgeHome/', views.judge_home),
     re_path(r'^ProblemSet/', views.problem_set),
     re_path(r'^Problem/(?P<problem_id>[0-9]+)/$', views.problem, name='problem'),

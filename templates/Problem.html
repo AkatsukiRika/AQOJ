@@ -1,101 +1,57 @@
-<html>
+{% extends "base.html" %}
+{% load staticfiles %}
 
-    <head>
-        <title> Problem </title>
-        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <style type="text/css">
-            .bg {
-                background: url("/static/Love-Live-Sunshine-logo-simple-Love-Live-1334089.jpg");
-                background-position: center 0;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-                -webkit-background-size: cover;
-                -o-background-size: cover;
-                -moz-background-size: cover;
-                -ms-background-size: cover;
-            }
-        </style>
-    </head>
+{% block title %}
+Aqours Online Judge - Problems
+{% endblock %}
 
-    <body class="row bg">
-        <div class="container-fluid">
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">AQOJ</a>
-                    </div>
-                    <div>
-                        <ul class="nav navbar-nav">
-                            <li><a href="/JudgeHome">HOME</a></li>
-                            <li class="active"><a href="/ProblemSet">PROBLEM</a></li>
-                            <li><a href="/Ranking">RANKING</a></li>
-                            <li><a href="/ContestList">CONTEST</a></li>
-                            <li><a href="/Status">STATUS</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    USER
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="/Login">LOGIN</a></li>
-                                    <li><a href="/Logout">LOG OUT</a></li>
-                                    <li><a href="/Register">REGISTER</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-        <div class="container">
-            <div class="jumbotron" style="opacity: 0.5">
-                <h1>{{ problem_id }}. {{ title }}</h1>
-                <br/><p>Time Limit: {{ time_limit }} MS</p>
-                <p>Memory Limit: {{ memory_limit }} MB</p>
+{% block container %}
+<div class="jumbotron">
+    <h1>{{ problem_id }}. {{ title }}</h1>
+    <br/><p>Time Limit: {{ time_limit }} MS</p>
+    <p>Memory Limit: {{ memory_limit }} MB</p>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Problem Description:</h3>
+        <blockquote>{{ description|linebreaksbr }}</blockquote>
+        <h3>Input Format:</h3>
+        <blockquote>{{ input_format|linebreaksbr }}</blockquote>
+        <h3>Output Format:</h3>
+        <blockquote>{{ output_format|linebreaksbr }}</blockquote>
+        <h3>Sample Input:</h3>
+        <blockquote>{{ sample_input|linebreaksbr }}</blockquote>
+        <h3>Sample Output:</h3>
+        <blockquote>{{ sample_output|linebreaksbr }}</blockquote>
+        <h3>Range and Hint:</h3>
+        <blockquote>{{ range_and_hint|linebreaksbr }}</blockquote>
+        <h3>Your Code:</h3>
+        <form action="{% url 'submit_code' problem_id %}" method="post">
+            {% csrf_token %}
+            <div class="col-sm-2">
+                <p> <select class="form-control" name="language">
+                    <option value="cpp"> c++ </option>
+                    <option value="python3"> python 3 </option>
+                    <option value="java"> java </option>
+                </select> </p>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <h3>Problem Description:</h3>
-                    <blockquote>{{ description|linebreaksbr }}</blockquote>
-                    <h3>Input Format:</h3>
-                    <blockquote>{{ input_format|linebreaksbr }}</blockquote>
-                    <h3>Output Format:</h3>
-                    <blockquote>{{ output_format|linebreaksbr }}</blockquote>
-                    <h3>Sample Input:</h3>
-                    <blockquote>{{ sample_input|linebreaksbr }}</blockquote>
-                    <h3>Sample Output:</h3>
-                    <blockquote>{{ sample_output|linebreaksbr }}</blockquote>
-                    <h3>Range and Hint:</h3>
-                    <blockquote>{{ range_and_hint|linebreaksbr }}</blockquote>
-                    <h3>Your Code:</h3>
-                    <form action="{% url 'submit_code' problem_id %}" method="post">
-                        {% csrf_token %}
-                        <div class="col-sm-2">
-                            <p> <select class="form-control" name="language">
-                                <option value="cpp"> c++ </option>
-                                <option value="python3"> python 3 </option>
-                                <option value="java"> java </option>
-                            </select> </p>
-                        </div>
-                        <div class="col-sm-12">
-                            <p><textarea id="code" name="code" class="form-control" rows="28"></textarea></p>
-                        </div>
-                        <div class="col-sm-12">
-                            <button class="btn btn-primary" type="submit">交付评测</button>
-                        </div>
-                        <div class="col-sm-12">
-                            <br/>
-                            <a href="/ProblemSet"> 回到题目列表 </a> </p>
-                            <a href="/JudgeHome"> 回到主页 </a> </p>
-                            <br/>
-                        </div>
-                    </form>
-                </div>
+            <div class="col-sm-12">
+                <p><textarea id="code" name="code" class="form-control" rows="28"></textarea></p>
             </div>
-        </div>
-    </body>
-</html>
+            <div class="col-sm-12">
+                <button class="btn btn-primary" type="submit">交付评测</button>
+            </div>
+            <div class="col-sm-12">
+                <br/>
+                <a href="/ProblemSet"> 回到题目列表 </a> </p>
+                <a href="/JudgeHome"> 回到主页 </a> </p>
+                <br/>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extracss %}
+<link href="{% static 'judger/css/Problem.css' %}" rel="stylesheet">
+{% endblock %}

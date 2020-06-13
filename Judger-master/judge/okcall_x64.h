@@ -113,6 +113,13 @@ SysCallLimit JavaLimit[] = {
     Allow (SYS_time) Calls (INF),
     Allow (SYS_uname) Calls (1),
     Allow (SYS_write) Calls (INF),
+    // 20-06-13新增
+    Allow (SYS_openat) Calls (INF),
+    Allow (SYS_pread64) Calls (INF),
+    Allow (SYS_stat) Calls (INF),
+    Allow (SYS_arch_prctl) Calls (INF),
+    Allow (SYS_prlimit64) Calls (INF),
+    Allow (SYS_getpid) Calls (INF),
     EndLimitTable
 };
 

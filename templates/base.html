@@ -1,0 +1,81 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        .bg {
+            background: url("/static/Love-Live-Sunshine-logo-simple-Love-Live-1334089.jpg");
+            background-position: center 0;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -ms-background-size: cover;
+        }
+        .jumbotron {
+            background-color: rgba(0, 0, 0, 0);
+        }
+    </style>
+</head>
+
+<body class="row bg">
+    <div class="container-fluid">
+        {% block navbar %}
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">AQOJ</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="nav-judge-home"><a href="/JudgeHome">HOME</a></li>
+                        <li class="nav-problems"><a href="/ProblemSet">PROBLEM</a></li>
+                        <li class="nav-ranking"><a href="/Ranking">RANKING</a></li>
+                        <li class="nav-contests"><a href="/ContestList">CONTEST</a></li>
+                        <li class="nav-status"><a href="/Status">STATUS</a></li>
+                        <li class="dropdown nav-user">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                USER
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Login">LOGIN</a></li>
+                                <li><a href="/Logout">LOG OUT</a></li>
+                                <li><a href="/Register">REGISTER</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% endblock %}
+    </div>
+
+    <div class="container">
+        {% block container %}
+        {% endblock %}
+    </div>
+
+    {% block footer %}
+    {% endblock %}
+</body>
+
+{% block extracss %}
+{% endblock %}
+
+<script src="{% static 'judger/js/base.js' %}"></script>
+{% block extrajs %}
+{% endblock %}
+
+</html>

@@ -1,0 +1,11 @@
+.bg {
+    background: url("/static/illustration-Love-Live-Sunshine-Toy-Watanabe-You-play-color-28644.png");
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -ms-background-size: cover;
+}

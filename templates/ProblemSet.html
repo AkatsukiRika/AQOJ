@@ -1,84 +1,36 @@
-<html>
-    <head>
-        <title> Problem Set </title>
-        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <style type="text/css">
-            .bg {
-                background: url("/static/Love-Live-Sunshine-logo-simple-Love-Live-1334089.jpg");
-                background-position: center 0;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-                -webkit-background-size: cover;
-                -o-background-size: cover;
-                -moz-background-size: cover;
-                -ms-background-size: cover;
-            }
-        </style>
-    </head>
+{% extends "base.html" %}
+{% load staticfiles %}
 
-    <body class="row bg">
-    <div class="container-fluid">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">AQOJ</a>
-                </div>
-                <div>
-                    <ul class="nav navbar-nav">
-                        <li><a href="/JudgeHome">HOME</a></li>
-                        <li class="active"><a href="/ProblemSet">PROBLEM</a></li>
-                        <li><a href="/Ranking">RANKING</a></li>
-                        <li><a href="/ContestList">CONTEST</a></li>
-                        <li><a href="/Status">STATUS</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                USER
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/Login">LOGIN</a></li>
-                                <li><a href="/Logout">LOG OUT</a></li>
-                                <li><a href="/Register">REGISTER</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+{% block title %}
+Aqours Online Judge - Problems
+{% endblock %}
+
+{% block container %}
+<div class="row">
+    <div class="col-sm-12">
+        <h1>PROBLEM SET</h1>
+        <ul class="list-group">
+            {% for problem in problem_list %}
+                {% if not problem.is_private %}
+                    <li class="list-group-item" style="opacity: 0.8"><a href="/Problem/{{ problem.problem_id }}">{{ problem.problem_id }}. {{ problem.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
     </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h1>PROBLEM SET</h1>
-                    <ul class="list-group">
-                        {% for problem in problem_list %}
-                            {% if not problem.is_private %}
-                                <li class="list-group-item" style="opacity: 0.8"><a href="/Problem/{{ problem.problem_id }}">{{ problem.problem_id }}. {{ problem.title }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div class="col-sm-6">
-                    <ul class="pagination">
-                        <li class="step-links">
-                            {% if problem_list.has_previous %}
-                                <a class="active" href="?page={{ problem_list.previous_page_number }}">上一页</a>
-                            {% endif %}
-                        <span class="current">
-                            Page {{ problem_list.number }} of {{ problem_list.paginator.num_pages }}</span>
-                        {% if problem_list.has_next %}
-                            <a class="active" href="?page={{ problem_list.next_page_number }}">下一页</a>
-                        {% endif %}
-                        </span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-    </body>
-</html>
+    <div class="col-sm-6">
+        <ul class="pagination">
+            <li class="step-links">
+                {% if problem_list.has_previous %}
+                    <a class="active" href="?page={{ problem_list.previous_page_number }}">上一页</a>
+                {% endif %}
+            <span class="current">
+                Page {{ problem_list.number }} of {{ problem_list.paginator.num_pages }}</span>
+            {% if problem_list.has_next %}
+                <a class="active" href="?page={{ problem_list.next_page_number }}">下一页</a>
+            {% endif %}
+            </span>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
