@@ -10,23 +10,6 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <style type="text/css">
-        .bg {
-            background: url("/static/Love-Live-Sunshine-logo-simple-Love-Live-1334089.jpg");
-            background-position: center 0;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            -webkit-background-size: cover;
-            -o-background-size: cover;
-            -moz-background-size: cover;
-            -ms-background-size: cover;
-        }
-        .jumbotron {
-            background-color: rgba(0, 0, 0, 0);
-        }
-    </style>
 </head>
 
 <body class="row bg">
@@ -71,6 +54,7 @@
     {% endblock %}
 </body>
 
+<link href="{% static 'judger/css/base.css' %}" rel="stylesheet">
 {% block extracss %}
 {% endblock %}
 

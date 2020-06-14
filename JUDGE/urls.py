@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
+from django.views import static
 from judger import views
+import JUDGE.settings as settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,5 +36,6 @@ urlpatterns = [
     re_path(r'^Contest/(?P<contest_id>[0-9]+)/participated/$', views.participate, name='participate'),
     re_path(r'^Contest/(?P<contest_id>[0-9]+)/exited/$', views.exit, name='exit'),
     re_path(r'^ContestStatus/(?P<contest_id>[0-9]+)/$', views.contest_status),
-    re_path(r'^ContestRanking/(?P<contest_id>[0-9]+)/$', views.contest_ranking)
+    re_path(r'^ContestRanking/(?P<contest_id>[0-9]+)/$', views.contest_ranking),
+    ### re_path(r'^static/(?P<path>.*)$', static.serve, {'document_root': settings.STATIC_ROOT,})
 ]

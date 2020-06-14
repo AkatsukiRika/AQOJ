@@ -28,8 +28,8 @@ Aqours Online Judge - Problems
         <h3>Your Code:</h3>
         <form action="{% url 'submit_code' problem_id %}" method="post">
             {% csrf_token %}
-            <div class="col-sm-2">
-                <p> <select class="form-control" name="language">
+            <div class="col-sm-3">
+                <p> <select class="form-control" id="language" name="language">
                     <option value="cpp"> c++ </option>
                     <option value="python3"> python 3 </option>
                     <option value="java"> java </option>
@@ -54,4 +54,16 @@ Aqours Online Judge - Problems
 
 {% block extracss %}
 <link href="{% static 'judger/css/Problem.css' %}" rel="stylesheet">
+<link href="{% static 'codemirror/lib/codemirror.css' %}" rel="stylesheet">
+<link href="{% static 'codemirror/theme/base16-light.css' %}" rel="stylesheet">
+<link href="{% static 'codemirror/addon/hint/show-hint.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block extrajs %}
+<script src="{% static 'codemirror/lib/codemirror.js' %}"></script>
+<script src="{% static 'codemirror/mode/clike/clike.js' %}"></script>
+<script src="{% static 'codemirror/mode/python/python.js' %}"></script>
+<script src="{% static 'codemirror/addon/edit/matchbrackets.js' %}"></script>
+<script src="{% static 'codemirror/addon/hint/show-hint.js' %}"></script>
+<script src="{% static 'judger/js/Problem.js' %}"></script>
 {% endblock %}
