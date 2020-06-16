@@ -5,12 +5,15 @@
 Aqours Online Judge - Problems
 {% endblock %}
 
-{% block container %}
-<div class="row">
-    <div class="col-sm-12">
-        <h1>提交已完成</h1>
-        <p>来期待结果的发布吧！</p>
-        <a href="/JudgeHome">返回主页</a>
-    </div>
-</div>
+{% block extrajs %}
+<script>
+swal({
+    title: "Successfully submitted!",
+    text: "Please wait a while before your code is checked.",
+    icon: "success",
+    closeOnConfirm: false
+}, function () {
+    window.history.go(-1);
+});
+</script>
 {% endblock %}

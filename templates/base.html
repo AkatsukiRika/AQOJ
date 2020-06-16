@@ -54,10 +54,13 @@
     {% endblock %}
 </body>
 
+<link href="{% static 'sweetalert/sweetalert.css' %}" rel="stylesheet">
 <link href="{% static 'judger/css/base.css' %}" rel="stylesheet">
 {% block extracss %}
 {% endblock %}
 
+<script src="http://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+<script src="{% static 'sweetalert/sweetalert.min.js' %}"></script>
 <script src="{% static 'judger/js/base.js' %}"></script>
 {% block extrajs %}
 {% endblock %}

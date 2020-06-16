@@ -19,7 +19,36 @@ var editor = CodeMirror.fromTextArea(codeArea, {
     lineWrapping: true,
     theme: "base16-light"
 });
+editor.setSize('height', '400px');
 
 language.onclick = function() {
     editor.setOption("mode", modeDict[language.value]);
+    console.log("mode", modeDict[language.value]);
+};
+
+var submitCode = function (problemId) {
+    $.ajax({
+        url: "/Submitted/" + problemId + "/",
+        type: "post",
+        dataType: "text",
+        data: {
+            code: $("#code").text(editor.getValue()).val(),
+            language: $("#language").val(),
+            csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function (data) {
+            swal({
+                title: "Aqours Online Judge",
+                text: data,
+                icon: "success",
+            });
+        },
+        error: function () {
+            swal({
+                title: "Error",
+                text: "Something went wrong......",
+                icon: "error",
+            });
+        }
+    });
 };

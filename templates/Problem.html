@@ -29,17 +29,19 @@ Aqours Online Judge - Problems
         <form action="{% url 'submit_code' problem_id %}" method="post">
             {% csrf_token %}
             <div class="col-sm-3">
-                <p> <select class="form-control" id="language" name="language">
-                    <option value="cpp"> c++ </option>
-                    <option value="python3"> python 3 </option>
-                    <option value="java"> java </option>
-                </select> </p>
+                <p> 
+                    <select class="form-control" id="language" name="language">
+                        <option value="cpp"> c++ </option>
+                        <option value="python3"> python 3 </option>
+                        <option value="java"> java </option>
+                    </select>
+                </p>
             </div>
             <div class="col-sm-12">
                 <p><textarea id="code" name="code" class="form-control" rows="28"></textarea></p>
             </div>
             <div class="col-sm-12">
-                <button class="btn btn-primary" type="submit">交付评测</button>
+                <button class="btn btn-primary" type="button" onclick="submitCode({{ problem_id }})">交付评测</button>
             </div>
             <div class="col-sm-12">
                 <br/>
