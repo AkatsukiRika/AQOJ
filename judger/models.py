@@ -53,7 +53,7 @@ class Code(models.Model):
     WJ = models.BooleanField(default=False)  # Judging
 
     def __str__(self):
-        return str(self.code_id)
+        return str(self.submit_time)
 
     class Meta:
         ordering = ["-code_id"]

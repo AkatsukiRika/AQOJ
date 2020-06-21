@@ -37,17 +37,18 @@ var submitCode = function (problemId) {
             csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val()
         },
         success: function (data) {
-            swal({
+            Swal.fire({
                 title: "Aqours Online Judge",
                 text: data,
-                icon: "success",
+                timer: 5000,
+                showConfirmButton: false,
+                allowOutsideClick: false
             });
         },
         error: function () {
-            swal({
+            Swal.fire({
                 title: "Error",
-                text: "Something went wrong......",
-                icon: "error",
+                text: "Something went wrong......"
             });
         }
     });

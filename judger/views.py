@@ -53,14 +53,11 @@ def problem_set(request):
 
 def submit_code(request, problem_id):
     # 20-06-16更新：改为用Ajax获取数据
-    print("PROBLEM_ID", problem_id)
-    print("REQUEST", request.POST.get("code"))
     code = Code.objects.latest('code_id')
     prob = get_object_or_404(Problem, problem_id=problem_id)
     codex = Code(code_id=code.code_id+1, problem=prob)
     # 判断是否为空，若为空就直接返回错误
     if request.POST['code'].strip() == "":
-        print("Code is empty")
         return HttpResponse("Code should not be empty!")
     codex.code_itself = request.POST['code']
     codex.language = request.POST['language']
@@ -69,7 +66,6 @@ def submit_code(request, problem_id):
         codex.postman = postman
         codex.WJ = True
         codex.save()
-        print("SUCCEEDED")
         return HttpResponse("Code submitted!")
     except:
         return HttpResponse("Please login first!")

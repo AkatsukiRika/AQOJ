@@ -12,3 +12,6 @@
 .jumbotron {
     background-color: rgba(0, 0, 0, 0);
 }
+.swal2-container {
+    zoom: 1.5;
+}
