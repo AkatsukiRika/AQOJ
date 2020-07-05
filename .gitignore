@@ -144,6 +144,3 @@ cython_debug/
 # IDE IGNORE
 .idea/
 .vscode/
-
-# SQLITE DATABASE
-db.sqlite3
